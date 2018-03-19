@@ -20,8 +20,12 @@
 
     <ui:define name="content">
         <h:form>
-            <ezcomp:entrada value="#{managedBean.text}"/>
-            <p:commandButton value="Calcular longitut" actionListener="#{managedBean.comprobarLongitut()}"/>
+            <h:panelGrid id="grid">
+                <ezcomp:entrada id="entrada" value="#{managedBean.text}"/>
+                <p:inputText id="text2" value="#{managedBean.text2}" validator="#{managedBean.validarLongitutText}"/>
+                <p:commandButton value="Calcular longitut" actionListener="#{managedBean.comprobarLongitut()}" update="grid"/>
+                <h:message id="message" for="text2" style="color:red" />
+            </h:panelGrid>
         </h:form>
     </ui:define>
 

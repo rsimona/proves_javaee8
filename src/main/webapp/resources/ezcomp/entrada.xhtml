@@ -7,11 +7,12 @@
     <!-- INTERFACE -->
     <cc:interface>
         <cc:attribute name="value" required="true"/>
+        <cc:attribute name="id" required="false"/>
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <p:outputLabel value="Entra text:"/><br/>
-        <p:inputText value="#{cc.attrs.value}"/>
+        <p:inputText value="#{cc.attrs.value}" id="#{cc.attrs.id}"/>
     </cc:implementation>
 </html>

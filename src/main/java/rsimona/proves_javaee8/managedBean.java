@@ -6,8 +6,11 @@
 package rsimona.proves_javaee8;
 
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -18,7 +21,9 @@ import javax.enterprise.context.RequestScoped;
 public class managedBean {
 
     private String text;
+    private String text2;
     private int longitut;
+
     /**
      * Creates a new instance of managedBean
      */
@@ -33,6 +38,14 @@ public class managedBean {
         this.text = text;
     }
 
+    public String getText2() {
+        return text2;
+    }
+
+    public void setText2(String text2) {
+        this.text2 = text2;
+    }
+
     public int getLongitut() {
         return longitut;
     }
@@ -40,10 +53,19 @@ public class managedBean {
     public void setLongitut(int longitut) {
         this.longitut = longitut;
     }
-    
-    public void comprobarLongitut(){
+
+    public void comprobarLongitut() {
         System.out.println(text);
-        longitut=this.text.length();
+        longitut = this.text.length();
         System.out.println(longitut);
+    }
+
+    public void validarLongitutText(FacesContext context, UIComponent toValidate, Object value) {
+        if (((String) value).length() < 2 || ((String) value).length() > 5) {
+            ((UIInput) toValidate).setValid(false);
+           
+            FacesMessage message = new FacesMessage("Longitut no vàlida", "La longitut del text ha de ser d'entre 2 i 5 caràcters");
+            context.addMessage(toValidate.getClientId(context), message);
+        }
     }
 }
