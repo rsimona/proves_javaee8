@@ -22,8 +22,9 @@
         <h:form>
             <h:panelGrid id="grid">
                 <ezcomp:entrada id="entrada" value="#{managedBean.text}"/>
+                <p:outputLabel for="text2" value="Exemple de validació i 'message' (El text ha de tenir entre 2 i 5 caràcters)"/>
                 <p:inputText id="text2" value="#{managedBean.text2}" validator="#{managedBean.validarLongitutText}"/>
-                <p:commandButton value="Calcular longitut" actionListener="#{managedBean.comprobarLongitut()}" update="grid"/>
+                <p:commandButton value="Comprovar longitut" actionListener="#{managedBean.comprobarLongitut()}" update="grid"/>
                 <h:message id="message" for="text2" style="color:red" />
             </h:panelGrid>
         </h:form>

@@ -12,7 +12,9 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <p:outputLabel value="Entra text:"/><br/>
-        <p:inputText value="#{cc.attrs.value}" id="#{cc.attrs.id}"/>
+        <div style="border: solid red; padding: 1em">
+            <p:outputLabel value="Entra text (Exemple de composite component):"/><br/>
+            <p:inputText value="#{cc.attrs.value}" id="#{cc.attrs.id}"/>
+        </div>
     </cc:implementation>
 </html>
