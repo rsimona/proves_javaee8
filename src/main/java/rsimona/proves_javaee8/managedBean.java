@@ -11,6 +11,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import org.primefaces.PrimeFaces;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -24,10 +26,14 @@ public class managedBean {
     private String text2;
     private int longitut;
 
-    /**
-     * Creates a new instance of managedBean
-     */
+    private String textWebsocket;
+
+    public void loadTextWebsocket() {
+        PrimeFaces.current().executeScript("connectar('" + this.textWebsocket + "')");
+    }
+
     public managedBean() {
+
     }
 
     public String getText() {
@@ -54,6 +60,14 @@ public class managedBean {
         this.longitut = longitut;
     }
 
+    public String getTextWebsocket() {
+        return textWebsocket;
+    }
+
+    public void setTextWebsocket(String textWebsocket) {
+        this.textWebsocket = textWebsocket;
+    }
+
     public void comprobarLongitut() {
         System.out.println(text);
         longitut = this.text.length();
@@ -63,7 +77,7 @@ public class managedBean {
     public void validarLongitutText(FacesContext context, UIComponent toValidate, Object value) {
         if (((String) value).length() < 2 || ((String) value).length() > 5) {
             ((UIInput) toValidate).setValid(false);
-           
+
             FacesMessage message = new FacesMessage("Longitut no vàlida", "La longitut del text ha de ser d'entre 2 i 5 caràcters");
             context.addMessage(toValidate.getClientId(context), message);
         }
