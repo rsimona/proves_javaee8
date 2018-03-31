@@ -32,7 +32,6 @@
     position: relative;
     background-color: #dddddd;
     padding: 5px;
-    color: red;
 }
 
 .left_content {
@@ -48,15 +47,19 @@
 }
 
 #top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
 }
 
-
+.requadre{
+    border: solid red; 
+    padding: 1em; 
+    margin: 1em
+}

@@ -12,7 +12,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
-import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -29,6 +28,7 @@ public class managedBean {
     private String textWebsocket;
 
     public void loadTextWebsocket() {
+        // Execute una funció de javaScript des de el backend bean
         PrimeFaces.current().executeScript("connectar('" + this.textWebsocket + "')");
     }
 

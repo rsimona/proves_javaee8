@@ -22,31 +22,40 @@
         <script type="text/javascript">
             var webSocket = new WebSocket('ws://localhost:8080/proves_javaee8/websocket');
 
-            webSocket.onmessage = function(event){
-                alert(event.data);
+            webSocket.onmessage = function (event) {
+                //alert(event.data);
+                document.getElementById("frm_websocket:retorn_websocket").value = event.data;
+                document.getElementById("frm_websocket:retorn_websocket").innerHTML = event.data;
             };
-            
+
             function connectar(text) {
-                alert(text);
+                //alert(text);
                 webSocket.send(text);
                 return false;
             }
         </script>
 
         <h:form>
-            <h:panelGrid id="grid">
+            <h:panelGrid id="grid" >
                 <ezcomp:entrada id="entrada" value="#{managedBean.text}"/>
-                <p:outputLabel for="text2" value="Exemple de validació i 'message' (El text ha de tenir entre 2 i 5 caràcters)"/>
-                <p:inputText id="text2" value="#{managedBean.text2}" validator="#{managedBean.validarLongitutText}"/>
-                <p:commandButton value="Comprovar longitut" actionListener="#{managedBean.comprobarLongitut()}" update="grid"/>
-                <h:message id="message" for="text2" style="color:red" />
+                <h:panelGrid styleClass="requadre">
+                    <p:outputLabel for="text2" escape="false" value="&lt;strong&gt;Exemple de validació i 'message'&lt;/strong&gt; (El text ha de tenir entre 2 i 5 caràcters)"/>
+                    <p:inputText id="text2" value="#{managedBean.text2}" validator="#{managedBean.validarLongitutText}"/>
+                    <p:commandButton value="Comprovar longitut" actionListener="#{managedBean.comprobarLongitut()}" update="grid"/>
+                    <h:message id="message" for="text2" style="color:red" />
+                </h:panelGrid>
             </h:panelGrid>
         </h:form>
 
         <h:form id="frm_websocket">
-            <p:outputLabel id="retorn_websocket" />
-            <p:inputText id="text_websocket" value="#{managedBean.textWebsocket}" />
-            <p:commandButton value="Enviar text" actionListener="#{managedBean.loadTextWebsocket()}" />
+            <h:panelGrid columns="2" styleClass="requadre">
+                <p:outputLabel escape="false" value="&lt;strong&gt;Exemple de WebSocket&lt;/strong&gt;"/>
+                <p:column/>
+                <p:inputText id="text_websocket" value="#{managedBean.textWebsocket}" />
+                <p:commandButton value="Enviar text" actionListener="#{managedBean.loadTextWebsocket()}" />
+                <p:outputLabel id="retorn_websocket" />
+                <p:column/>
+            </h:panelGrid>
         </h:form>
 
     </ui:define>
