@@ -37,6 +37,13 @@ public class managedBean {
             Logger.getLogger(managedBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void cridaServletAsincron(){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("servlet_asincron");
+        } catch (IOException ex) {
+            Logger.getLogger(managedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void loadTextWebsocket() {
         // Execute una funció de javaScript des de el backend bean

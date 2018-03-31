@@ -59,8 +59,15 @@
 
         <h:form>
             <h:panelGrid styleClass="requadre">
-                <p:outputLabel escape="false" value="&lt;strong&gt;Exemple de Socket Normal&lt;/strong&gt;"/>
+                <p:outputLabel escape="false" value="&lt;strong&gt;Exemple de Servlet Normal&lt;/strong&gt;"/>
                 <p:commandButton value="Crida a Servlet normal" action="#{managedBean.cridaServlet}" />
+            </h:panelGrid>
+        </h:form>
+
+        <h:form>
+            <h:panelGrid styleClass="requadre">
+                <p:outputLabel escape="false" value="&lt;strong&gt;Exemple de Servlet Asíncron&lt;/strong&gt;"/>
+                <p:commandButton value="Crida a Servlet asíncron" action="#{managedBean.cridaServletAsincron}" />
             </h:panelGrid>
         </h:form>
     </ui:define>
