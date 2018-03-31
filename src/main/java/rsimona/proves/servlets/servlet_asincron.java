@@ -99,7 +99,11 @@ public class servlet_asincron extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(servlet_asincron.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
