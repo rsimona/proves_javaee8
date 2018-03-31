@@ -24,7 +24,6 @@
 
             webSocket.onmessage = function (event) {
                 //alert(event.data);
-                document.getElementById("frm_websocket:retorn_websocket").value = event.data;
                 document.getElementById("frm_websocket:retorn_websocket").innerHTML = event.data;
             };
 
@@ -58,6 +57,12 @@
             </h:panelGrid>
         </h:form>
 
+        <h:form>
+            <h:panelGrid styleClass="requadre">
+                <p:outputLabel escape="false" value="&lt;strong&gt;Exemple de Socket Normal&lt;/strong&gt;"/>
+                <p:commandButton value="Crida a Servlet normal" action="#{managedBean.cridaServlet}" />
+            </h:panelGrid>
+        </h:form>
     </ui:define>
 
     <ui:define name="bottom">

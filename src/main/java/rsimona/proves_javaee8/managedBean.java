@@ -5,6 +5,9 @@
  */
 package rsimona.proves_javaee8;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -26,6 +29,14 @@ public class managedBean {
     private int longitut;
 
     private String textWebsocket;
+    
+    public void cridaServlet(){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("prova_servlet");
+        } catch (IOException ex) {
+            Logger.getLogger(managedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void loadTextWebsocket() {
         // Execute una funció de javaScript des de el backend bean
